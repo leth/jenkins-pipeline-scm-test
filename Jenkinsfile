@@ -1,9 +1,10 @@
-
+before = null
 stage('Check before') {
 	node {
 		dir('before') {
 			checkout scm
 			sh 'cat date.txt'
+			before = readFile 'date.txt'
 		}
 	}
 }
@@ -20,6 +21,10 @@ stage('Check after') {
 		dir('after') {
 			checkout scm
 			sh 'cat date.txt'
+			after = readFile 'date.txt'
+			if (before != after) {
+				error "dates do not match"
+			}
 		}
 	}
 }
