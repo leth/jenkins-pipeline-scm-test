@@ -11,7 +11,7 @@ stage('Update') {
 	node {
 		dir('update') {
 			checkout scm
-			sh 'git config --global user.email "you@example.com" && git config --global user.name "Your Name" && date > date.txt && git commit -am "test commit $(cat date.txt)" && GIT_SSH_COMMAND="ssh -i id_rsa" git push git@github.com:leth/jenkins-pipeline-scm-test.git HEAD:master'
+			sh 'git config --global user.email "you@example.com" && git config --global user.name "Your Name" && chmod go-rwx id_rsa && date > date.txt && git commit -am "test commit $(cat date.txt)" && GIT_SSH_COMMAND="ssh -i id_rsa" git push git@github.com:leth/jenkins-pipeline-scm-test.git HEAD:master'
 		}
 	}
 }
