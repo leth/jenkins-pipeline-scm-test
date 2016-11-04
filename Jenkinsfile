@@ -7,7 +7,7 @@ stage('Check before') {
 		}
 	}
 }
-stage('Update')
+stage('Update') {
 	node {
 		dir('update') {
 			checkout scm
