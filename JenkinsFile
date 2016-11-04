@@ -11,7 +11,7 @@ stage('Update')
 	node {
 		dir('update') {
 			checkout scm
-			sh 'date > date.txt && git commit -am "test commit $(cat date.txt)" && git push origin master'
+			sh 'date > date.txt && git commit -am "test commit $(cat date.txt)" && GIT_SSH_COMMAND="ssh -i id_rsa" git push origin master'
 		}
 	}
 }
